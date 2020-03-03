@@ -1,4 +1,5 @@
 'use strict'
+var allImages = [];
 
 var product = [
   'bag',
@@ -60,7 +61,7 @@ function render() {
   console.log(secondProduct);
   thirdProduct = Products.all[randomNumber(0, Products.all.length - 1)];
   console.log(thirdProduct);
-  while (firstProduct.imagePath === secondProduct.imagePath || thirdProduct.imagePath === secondProduct.imagePath || thirdProduct.imagePath === firstProduct.imagePath) {
+  while (firstProduct.imagePath === secondProduct.imagePath || thirdProduct.imagePath === secondProduct.imagePath || thirdProduct.imagePath === firstProduct.imagePath || allImages.includes(firstProduct.imagePath) || allImages.includes(secondProduct.imagePath) || allImages.includes(thirdProduct.imagePath)) {
     firstProduct = Products.all[randomNumber(0, Products.all.length - 1)];
     secondProduct = Products.all[randomNumber(0, Products.all.length - 1)];
     thirdProduct = Products.all[randomNumber(0, Products.all.length - 1)];
@@ -76,6 +77,10 @@ function render() {
   thirdImage.src = thirdProduct.imagePath;
   thirdImage.alt = thirdProduct.name;
   thirdImage.title = thirdProduct.name;
+
+  allImages[0] = firstProduct.imagePath;
+  allImages[1] = secondProduct.imagePath;
+  allImages[2] = thirdProduct.imagePath;
 
 
 }
@@ -139,9 +144,9 @@ function chart() {
       datasets: [{
         label: '# of Clicks',
         data: numClicks,
-        backgroundColor: [
+        backgroundColor: 
           'rgba(255, 99, 132, 0.2)',
-        ],
+        
         borderColor: [
           'rgba(255, 99, 132, 1)',
         ],
@@ -151,9 +156,9 @@ function chart() {
       {
         label: '# of Views',
         data: numViews,
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-        ],
+        backgroundColor: 
+          'rgba(255, 99, 200 0.2)',
+        
         borderColor: [
           'rgba(255, 99, 132, 1)',
         ],
@@ -177,6 +182,7 @@ function chart() {
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 
 
 
