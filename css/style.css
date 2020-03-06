@@ -1,0 +1,77 @@
+body{
+    background-color: #f5f5f5;
+}
+
+header {
+    margin-top: 1%;
+    background-color: rgb(62, 13, 197);
+    padding: 1%;
+}
+
+header h1{
+    text-align: center;
+    text-shadow: black;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
+    font-weight: 700;
+    color: white;
+    
+}
+
+header nav{
+    margin-left: 1%;
+
+}
+
+header nav li{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+main h3{
+    font-size: 30px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 2%;
+    color: rgb(94, 40, 243);
+    transition: all .7s ease-in-out;
+    animation: msg 1.5s ease-in-out infinite;
+    text-align: center;
+}
+
+@keyframes msg {
+    0%, 100% {
+        background-color: rgb(94, 40, 243);
+    }
+    50%
+    {
+        background-color: white;
+    }
+}
+
+section img{
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+    margin-left: 2%;
+    border: 5px solid rgb(62, 13, 197);
+    }
+
+    main ul{
+        line-break: normal;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(94, 40, 243);
+    }
+
+    footer p{
+        font-size: 18px;
+        text-align: center;
+        color: rgb(94, 40, 243);
+        margin-top: 2%;
+    }
