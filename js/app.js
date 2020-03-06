@@ -175,6 +175,25 @@ function Products(name) {
 }
 Products.all = [];
 
+function newProducts(){
+  var productArr = JSON.stringify(Products.all);
+  localStorage.setItem('productsView', productArr);
+}
+
+function getproducts() {
+  var productArr = localStorage.getItem('productsView');
+  console.log(productArr);
+  if(productArr) {
+    Products.all = JSON.parse(productArr);
+    console.log(Products.all);
+    render2();
+
+  }
+}
+
+getproducts();
+
+
 for (var i = 0; i < product.length; i++) {
   new Products(product[i]);
 }
@@ -303,6 +322,77 @@ function chart() {
     }
   });
 }
+    // chart();
+    newProducts();
+    render2();
+  
+
+function render2() {
+    var ulE1 = document.getElementById('result');
+    for (var i =0; i<Products.all.length ; i++) {
+      var liE1 = document.createElement('li');
+      liE1.textContent = `${Products.all[i].name} had ${Products.all[i].click} votes and was shown ${Products.all[i].view} times`;
+      ulE1.appendChild(liE1);
+      var liE1 = document.createElement('li');
+    }
+    var allProducts = [];
+    var numClicks = [];
+    var numViews = [];
+    for (var i = 0; i < Products.all.length; i++) {
+      var productsName = Products.all[i].name;
+      allProducts.push(productsName);
+      var newClicks = Products.all[i].click;
+      numClicks.push(newClicks);
+      var newViews = Products.all[i].view;
+      numViews.push(newViews);
+    }
+  
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: allProducts,
+        datasets: [{
+          label: '# of Clicks',
+          data: numClicks,
+          backgroundColor: 
+            'rgba(255, 99, 132, 0.2)',
+          
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+          ],
+          borderWidth: 1
+  
+        },
+        {
+          label: '# of Views',
+          data: numViews,
+          backgroundColor: 
+            'rgba(255, 99, 200 0.2)',
+          
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+          ],
+          borderWidth: 1,
+          type: 'bar',
+          labels: allProducts
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+
+
+// function chart() {
+// }
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
